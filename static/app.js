@@ -1,5 +1,5 @@
 function plot(data) {
-    d3.json("samples.json").then(sampledata => {
+    d3.json("../data/samples.json").then(sampledata => {
         console.log(sampledata);
 
         var ids = sampledata.samples[0].otu_ids;
@@ -20,7 +20,25 @@ function plot(data) {
         var otuId = topValues.map(id => "OTU " + id);
         console.log(`OTU IDs: ${otuId}`);
 
+        console.log(`Sample Values: ${sampleValues}`)
+        console.log(`Id Values: ${idValues}`)
+
+        // trace variable
+        var trace = {
+            x: sampleValues,
+            y: otuId,
+            text: labels,
+            type: 'bar',
+            orientation: 'h'
+        };
+
+        var data = [trace];
         
+        var layout = {
+            title: "Top 10 OTU",
+        };
+
+        Plotly.newPlot("bar", data, layout);
     });
 
 }
