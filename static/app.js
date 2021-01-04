@@ -33,8 +33,8 @@ function plot(data) {
         
         var layout = {
             title: "Top 10 OTU",
-            width: 600,
-            height: 800
+            width: 500,
+            height: 600
         };
 
         Plotly.newPlot("bar", data, layout);
@@ -55,7 +55,7 @@ function plot(data) {
 
         var layoutB = {
             xaxis: {title: "OTU ID"},
-            width: 1000,
+            width: 1200,
             height: 400
         }
 
@@ -80,7 +80,7 @@ function getData(id) {
         demographic.html("");
 
         Object.entries(result).forEach((info) => {
-            demographic.append("h5").text(info[0].toUpperCase() + ": " + info[1] + "\n");
+            demographic.append("h5").text(info[0].toLowerCase() + ": " + info[1] + "\n");
 
         });
     }).catch(err => {
